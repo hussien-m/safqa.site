@@ -51,7 +51,7 @@ class DealTypes extends AdminController
             $imagePath = $request->file('image');
             $imageName = time() . '-' . $request->user_name . '.' . $request->file("image")->extension();
             $path = $request->file('image')
-                ->move(public_path("images/deals_type"), $imageName);
+                ->move(public_path("images".DIRECTORY_SEPARATOR."deals_type"), $imageName);
             $request->image = $imageName;
         }
 
@@ -86,7 +86,7 @@ class DealTypes extends AdminController
     public function update(Request $request, $id)
     {
         $type= DealType::findOrFail($id);
-        $image = public_path('images\deals_type\\'.$type->image);
+        $image = public_path('images'.DIRECTORY_SEPARATOR.'deals_type'.DIRECTORY_SEPARATOR.$type->image);
 
         if ($request->hasFile('image')) {
 
@@ -118,7 +118,7 @@ class DealTypes extends AdminController
     {
 
        $type= DealType::findOrFail($id);
-       $image = public_path('images\deals_type\\'.$type->image);
+       $image = public_path('images'.DIRECTORY_SEPARATOR.'deals_type'.DIRECTORY_SEPARATOR.$type->image);
 
        if(File::exists($image)) {
         File::delete($image);
