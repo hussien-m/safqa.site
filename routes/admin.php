@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\Settings;
 use App\Http\Controllers\Admin\Countries;
 use App\Http\Controllers\Admin\Cities;
 use App\Http\Controllers\Admin\Regions;
+use App\Http\Controllers\Admin\Deals;
+use App\Models\Deal;
 use Illuminate\Http\Request;
 
 Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('admin')->group(function(){
@@ -36,7 +38,16 @@ Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('ad
         Route::get('clear-cache',[Settings::class,'clearCache'])->name('clear.cache');
 
 
+        Route::post('admin.change-deal-active/{id}',function(Request $request,$id){
+            
+            $deal= Deal::findOrFail($id);
+            $deal->active = $request->active;
+            $deal->save();
 
+            toast('تم تعديل حالة الصفقة','success');
+            return back();
+
+        })->name('change-deal-active');
 
     });
 
@@ -52,6 +63,8 @@ Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('ad
 
     Route::resource('regions',Regions::class);
 
+    Route::resource('deals',Deals::class);
+
 });
 
 
@@ -60,3 +73,5 @@ Route::get('/get-country-city',function (Request $request){
     $category = \App\Models\City::where('country_id','=',$country_id)->get();
     return response()->json($category);
 });
+
+

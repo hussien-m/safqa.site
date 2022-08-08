@@ -30,7 +30,7 @@
 
                     <li class="nav-item {{ Request::is('admin/categories') ? 'active' : '' }}"><a href="{{route('admin.categories.index')}}"><i class="la la-list"></i><span class="menu-title" data-i18n="nav.dash.main">التصنيفات</span></a>
 
-                    <li class="nav-item"><a href="{{route('admin.dashboard')}}"><i class="ft ft-package"></i><span class="menu-title" data-i18n="nav.dash.main">الصفقات</span></a>
+                    <li class="nav-item {{ Request::is('admin/deals') ? 'active' : '' }}"><a href="{{route('admin.deals.index')}}"><i class="ft ft-package"></i><span class="menu-title" data-i18n="nav.dash.main">الصفقات</span></a>
                     </li>
                 </ul>
             </li>
