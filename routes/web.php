@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('siteStatus')->group(function(){
 
 
-
     Route::get('/', function () {
         return view('welcome');
     });

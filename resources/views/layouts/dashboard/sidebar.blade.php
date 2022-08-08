@@ -39,13 +39,13 @@
                 <span style="color:#0D7091" data-i18n="nav.category.layouts">منطقة الدول والمدن والمناطق</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Layouts"></i>
             </li>
 
-            <li class=" {{ Request::is('admin/deal-types/create') ? 'open':''}} {{ Request::is('admin/deal-types/*/edit') ? 'open':''}} {{ Request::is('admin/deal-types') ? 'open':''}} nav-item"><a href="index.html"><i class="la la-flag-o"></i><span class="menu-title" data-i18n="nav.dash.main">الدول و المدن</span><span class="badge badge badge-info badge-pill float-right mr-2">4</span></a>
+            <li class=" {{ Request::is('admin/countries/create') ? 'open':''}} {{ Request::is('admin/countries/*/edit') ? 'open':''}} {{ Request::is('admin/countries') ? 'open':''}} nav-item"><a href="index.html"><i class="la la-flag-o"></i><span class="menu-title" data-i18n="nav.dash.main">الدول و المدن</span><span class="badge badge badge-info badge-pill float-right mr-2">4</span></a>
                 <ul class="menu-content">
-                    <li class="nav-item {{ Request::is('admin/deal-types') ? 'active' : '' }}"><a href="{{route('admin.deal-types.index')}}"><i class="la la-flag-checkered"></i><span class="menu-title" data-i18n="nav.dash.main">الدول</span></a>
+                    <li class="nav-item {{ Request::is('admin/countries') ? 'active' : '' }}"><a href="{{route('admin.countries.index')}}"><i class="la la-flag-checkered"></i><span class="menu-title" data-i18n="nav.dash.main">الدول</span></a>
 
-                    <li class="nav-item {{ Request::is('admin/deal-targets') ? 'active' : '' }}"><a href="{{route('admin.deal-targets.index')}}"><i class="la la-building"></i><span class="menu-title" data-i18n="nav.dash.main">المدن</span></a>
+                    <li class="nav-item {{ Request::is('admin/cities') ? 'active' : '' }}"><a href="{{route('admin.cities.index')}}"><i class="la la-building"></i><span class="menu-title" data-i18n="nav.dash.main">المدن</span></a>
 
-                    <li class="nav-item {{ Request::is('admin/categories') ? 'active' : '' }}"><a href="{{route('admin.categories.index')}}"><i class="la la-bus"></i><span class="menu-title" data-i18n="nav.dash.main">المناطق</span></a>
+                    <li class="nav-item {{ Request::is('admin/regions') ? 'active' : '' }}"><a href="{{route('admin.regions.index')}}"><i class="la la-bus"></i><span class="menu-title" data-i18n="nav.dash.main">المناطق</span></a>
                 </ul>
             </li>
 

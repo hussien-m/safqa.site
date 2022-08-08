@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\Categories;
 use App\Http\Controllers\Admin\DealTargets;
 use App\Http\Controllers\Admin\DealTypes;
 use App\Http\Controllers\Admin\Settings;
+use App\Http\Controllers\Admin\Countries;
+use App\Http\Controllers\Admin\Cities;
+use App\Http\Controllers\Admin\Regions;
 use Illuminate\Http\Request;
 
 Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('admin')->group(function(){
@@ -38,14 +41,22 @@ Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('ad
     });
 
     Route::resource('deal-types',DealTypes::class);
+
     Route::resource('deal-targets',DealTargets::class);
+
     Route::resource('categories',Categories::class);
+
+    Route::resource('countries',Countries::class);
+
+    Route::resource('cities',Cities::class);
+
+    Route::resource('regions',Regions::class);
 
 });
 
 
-Route::get('/get-company-category',function (Request $request){
-    $company_id = $request->company_id;
-    $category = \App\Models\State::where('country_id','=',$company_id)->get();
+Route::get('/get-country-city',function (Request $request){
+    $country_id = $request->country_id;
+    $category = \App\Models\City::where('country_id','=',$country_id)->get();
     return response()->json($category);
 });

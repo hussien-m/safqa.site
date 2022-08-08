@@ -34,37 +34,43 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>اسم المنتطقة</th>
+                    <th>اسم المدينة</th>
                     <th>اسم الدولة</th>
                     <th>تاريخ الانشاء</th>
                     <th>حدث</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @forelse ( $countries as $key=>$country )
-                        <tr id="{{$country->id}}">
+                    @forelse ( $regions as $key=>$region )
+                        <tr id="{{$region->id}}">
                             <td>{{$key+1}}</td>
-                            <td>{{$country->name}}</td>
-                            <td>{{$country->created_at}}</td>
+                            <td>{{$region->name}}</td>
+                            <td>{{$region->city->name}}</td>
+                            <td>{{$region->country->name}}</td>
+                            <td>{{$region->created_at}}</td>
 
                             <td>
                                 <form action="javascript:void(0)" method="post">
                                     @csrf
-                                    <button data-id="{{ $country->id }}" data-name="{{$country->name}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف الدولة"  class="btn  btn-danger del">
+                                    <button data-id="{{ $region->id }}" data-name="{{$region->name}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف المنطقة"  class="btn  btn-danger del">
                                         <i class="la la-trash-o"></i>
                                     </button>
-                                    <a href="{{route('admin.countries.edit',[$country->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="تعديل الدولة" ><i class="la la-edit"></i></a>
+                                    <a href="{{route('admin.regions.edit',[$region->id])}}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="تعديل المنطقة" ><i class="la la-edit"></i></a>
                                 </form>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" align="center">لاتوجد اي دول </td>
+                            <td colspan="5" align="center">لاتوجد اي مدن </td>
                         </tr>
                     @endforelse
                 </tbody>
                 <tfoot>
                   <tr>
                     <th>#</th>
+                    <th>اسم المنتطقة</th>
+                    <th>اسم المدينة</th>
                     <th>اسم الدولة</th>
                     <th>تاريخ الانشاء</th>
                     <th>حدث</th>
@@ -127,7 +133,7 @@ $(".del").on('click', function() {
         type:'info',
         icon:'info',
         title: "هل انتا متأكد؟",
-        text: "سوف تقوم بحذف الدولة : " +name,
+        text: "سوف تقوم بحذف المنطقة : " +name,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#DD6B55',
@@ -139,7 +145,7 @@ $(".del").on('click', function() {
 
                 $.ajax({
 
-                    url:"countries/"+id,
+                    url:"regions/"+id,
                     method: "delete",
                     data: {
                         _token: $('input[name="_token"]').val(),
@@ -149,7 +155,7 @@ $(".del").on('click', function() {
                         Swal.fire({
                                 position: 'center',
                                 icon: 'success',
-                                title: ' تم حذف الدول'+name,
+                                title: ' تم حذف المنطقة'+name,
                                 showConfirmButton: false,
                                 timer: 1500
                         });
