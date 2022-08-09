@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\HomeController;
+use App\Models\Deal;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

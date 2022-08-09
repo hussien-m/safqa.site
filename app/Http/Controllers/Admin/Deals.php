@@ -52,7 +52,7 @@ class Deals extends AdminController
 
     public function destroy($id)
     {
-        
+
     }
 
 }
