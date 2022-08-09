@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\City;
 use App\Models\Country;
-use App\Models\DealTarget;
-use App\Models\DealType;
 use Illuminate\Http\Request;
 
 class Cities extends AdminController
@@ -68,8 +66,8 @@ class Cities extends AdminController
         $data['createRoute']    = route('admin.cities.create');
 
         $data['city']           = City::findOrFail($id);
-        
-        $data['countries']           = Country::get();
+
+        $data['countries']      = Country::get();
 
         $data['page_name']      = 'تعديل المدينة';
 

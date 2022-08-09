@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -12,7 +11,7 @@ class AdminController extends Controller
     {
        $this->middleware('auth:admin');
 
-       $data['setting'] = Setting::first();
+       $data['setting'] = DB::table('settings')->first();
 
        view()->composer('*', function ($view) use ($data) {
 

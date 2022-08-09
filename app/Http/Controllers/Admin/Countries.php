@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
-use App\Models\DealTarget;
-use App\Models\DealType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Countries extends AdminController
 {
@@ -20,7 +19,7 @@ class Countries extends AdminController
 
         $data['createRoute']  = route('admin.countries.create');
 
-        $data['countries']   = Country::latest()->get();
+        $data['countries']   = DB::table('countries')->get();
 
         $data['requestIs']   = url()->current();
 
@@ -63,7 +62,7 @@ class Countries extends AdminController
     {
         $data['createRoute']    = route('admin.countries.create');
 
-        $data['country']         = Country::findOrFail($id);
+        $data['country']         = DB::table('countries')->where('id',$id)->first();
 
 
         $data['page_name']      = 'تعديل الدولة';
@@ -75,7 +74,7 @@ class Countries extends AdminController
 
     public function update(Request $request, $id)
     {
-        $country= Country::findOrFail($id);
+        $country= DB::table('countries')->where('id',$id)->first();
 
         $country->name   = $request->name;
 

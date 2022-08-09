@@ -17,7 +17,7 @@ class Settings extends AdminController
     public function index()
     {
         $data['createRoute']  = route('admin.settings');
-        $data['settings'] = Setting::first();
+        $data['settings'] = DB::table('settings')->first();
         $data['page_name']='عرض الاعدادات';
         $data['requestIs']   = url()->current();
         return view('admin.setting.index',$data);
