@@ -47,8 +47,8 @@
                     @forelse ( $deals as $key=>$deal )
                         <tr id="{{$deal->id}}">
                             <td>{{$deal->title}}</td>
-                            <td>{{$deal->type->deal_type}}</td>
-                            <td>{{$deal->target->target_deal}}</td>
+                            <td>{{$deal->deal_type}}</td>
+                            <td>{{$deal->target_deal}}</td>
                             <td>{{ Currency::format($deal->price,'SAR') }}</td>
                             <td>{{$deal->price_condition}}</td>
                             <td>{{$deal->status}}</td>
@@ -110,7 +110,9 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $('.table').DataTable({
+   var t = $('.table').DataTable({
+
+    order:[[3, 'desc'], [0, 'asc']],
 
         "oLanguage": {
 

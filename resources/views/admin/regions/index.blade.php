@@ -46,8 +46,8 @@
                         <tr id="{{$region->id}}">
                             <td>{{$key+1}}</td>
                             <td>{{$region->name}}</td>
-                            <td>{{$region->city->name}}</td>
-                            <td>{{$region->country->name}}</td>
+                            <td>{{$region->city_name}}</td>
+                            <td>{{$region->country_name}}</td>
                             <td>{{$region->created_at}}</td>
 
                             <td>

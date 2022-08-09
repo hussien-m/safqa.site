@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\DealTarget;
 use App\Models\DealType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DealTargets extends AdminController
 {
@@ -19,7 +20,12 @@ class DealTargets extends AdminController
 
         $data['createRoute']  = route('admin.deal-targets.create');
 
-        $data['deal_targets']   = DealTarget::with('type')->latest()->get();
+       // $data['deal_targets']   = DealTarget::with('type')->latest()->get();
+
+        $data['deal_targets']   = DB::table('deal_targets')
+                                     ->join('deal_types' ,'deal_targets.deal_type_id', '=' ,'deal_types.id' )
+                                     ->select('deal_targets.*','deal_types.deal_type')
+                                     ->get();
 
         $data['requestIs']   = url()->current();
 

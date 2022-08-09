@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Categories extends AdminController
 {
@@ -18,8 +19,10 @@ class Categories extends AdminController
 
         $data['createRoute']  = route('admin.categories.create');
 
-        $data['categories']   = Category::latest()->get();
-        $data['categories']->load('subCategory');
+        $data['categories']   = DB::table('categories')
+                                    ->select('categories.*')
+                                    ->get();
+
 
         $data['requestIs']   = url()->current();
 
@@ -37,7 +40,9 @@ class Categories extends AdminController
 
         $data['old_page']    = "التصنيفات";
 
-        $data['categories']   = Category::latest()->get();
+        $data['categories']   = DB::table('categories')
+                                    ->select('categories.*')
+                                    ->get();
 
         return view('admin.categories.create',$data);
     }
@@ -63,15 +68,15 @@ class Categories extends AdminController
 
     public function edit($id)
     {
-        $data['category']      = Category::findOrFail($id);
+        $data['category']        = Category::findOrFail($id);
+
         $data['categories']      = Category::get();
 
-        $data['createRoute']    = route('admin.categories.create');
+        $data['createRoute']     = route('admin.categories.create');
 
-        $data['page_name']      = 'تعديل التصنيف';
+        $data['page_name']       = 'تعديل التصنيف';
 
-        $data['old_page']       = "التصنيفات";
-
+        $data['old_page']        = "التصنيفات";
 
         return view('admin.categories.edit',$data);
     }

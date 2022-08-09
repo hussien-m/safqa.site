@@ -8,6 +8,7 @@ use App\Models\DealTarget;
 use App\Models\DealType;
 use App\Models\Region;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Regions extends AdminController
 {
@@ -23,7 +24,13 @@ class Regions extends AdminController
 
         $data['createRoute']  = route('admin.regions.create');
 
-        $data['regions']   = Region::latest()->get();
+        $data['regions']   =  DB::table('regions')
+                                ->join('cities', 'regions.city_id', '=', 'cities.id')
+                                ->join('countries', 'regions.country_id', '=', 'countries.id')
+                                ->select('regions.*', 'countries.name AS country_name','cities.name AS city_name')
+                                ->latest()
+                                ->get();
+
 
         $data['requestIs']   = url()->current();
 

@@ -44,7 +44,7 @@
                     @forelse ( $deal_targets as $key=>$target )
                         <tr id="{{$target->id}}">
                             <td>{{$target->target_deal}}</td>
-                            <td>{{$target->type->deal_type}}</td>
+                            <td>{{$target->deal_type}}</td>
                             <td>{{$target->user_pay}}</td>
                             <td>{{$target->created_at}}</td>
 
