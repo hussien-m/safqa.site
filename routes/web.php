@@ -21,4 +21,4 @@ Route::middleware('siteStatus')->group(function(){
     Route::get('var',  [HomeController::class , 'var']);
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);

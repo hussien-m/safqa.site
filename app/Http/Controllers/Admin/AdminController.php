@@ -12,16 +12,13 @@ class AdminController extends Controller
     {
        $this->middleware('auth:admin');
 
-       $setting = Setting::first();
+       $data['setting'] = Setting::first();
 
-       view()->composer('*', function ($view) use ($setting) {
+       view()->composer('*', function ($view) use ($data) {
 
-            view()->share('setting',$setting);
+            view()->share('data',$data);
 
-            $view->with([
-
-                    'setting'     => $setting,
-                ]);
+            $view->with($data);
 
         });
 

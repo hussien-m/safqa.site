@@ -47,6 +47,7 @@ return array(
     'App\\Models\\DealImages' => $baseDir . '/app/Models/DealImages.php',
     'App\\Models\\DealTarget' => $baseDir . '/app/Models/DealTarget.php',
     'App\\Models\\DealType' => $baseDir . '/app/Models/DealType.php',
+    'App\\Models\\Profile' => $baseDir . '/app/Models/Profile.php',
     'App\\Models\\Region' => $baseDir . '/app/Models/Region.php',
     'App\\Models\\Setting' => $baseDir . '/app/Models/Setting.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

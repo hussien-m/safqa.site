@@ -577,6 +577,7 @@ class ComposerStaticInit20e5b983fdbc475970af900618b10f78
         'App\\Models\\DealImages' => __DIR__ . '/../..' . '/app/Models/DealImages.php',
         'App\\Models\\DealTarget' => __DIR__ . '/../..' . '/app/Models/DealTarget.php',
         'App\\Models\\DealType' => __DIR__ . '/../..' . '/app/Models/DealType.php',
+        'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
         'App\\Models\\Region' => __DIR__ . '/../..' . '/app/Models/Region.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
