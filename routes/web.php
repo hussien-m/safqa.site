@@ -5,7 +5,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('siteStatus')->group(function(){
+Route::middleware(['siteStatus','verifiProfile'])->group(function(){
 
 
     Route::get('/', function () {
@@ -20,5 +20,15 @@ Route::middleware('siteStatus')->group(function(){
     Route::get('test', [HomeController::class , 'usd']);
     Route::get('var',  [HomeController::class , 'var']);
 });
+
+Route::get('complete-profile', function (){
+
+    if(!Auth::user()->profile->verifi){
+
+        return "Plese Complete Profile";
+    }
+    return redirect()->route('home');
+
+})->name('verifi.profile');
 
 Auth::routes(['verify' => true]);
