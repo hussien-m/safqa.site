@@ -18,7 +18,8 @@ class VerfiProfile
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::user()->profile->verifi){
+
+        if(Auth::check() && !Auth::user()->profile->verifi){
             return redirect()->route('verifi.profile');
         }
         return $next($request);
