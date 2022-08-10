@@ -28,8 +28,7 @@
   <!-- BEGIN Page Level CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/core/menu/menu-types/vertical-menu-modern.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/vendors/css/charts/morris.css')}}">
+
   <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/fonts/simple-line-icons/style.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/plugins/extensions/toastr.css')}}">

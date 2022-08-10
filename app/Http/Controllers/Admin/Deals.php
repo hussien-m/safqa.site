@@ -17,6 +17,7 @@ class Deals extends AdminController
     public function index()
     {
         $data['page_name']    = 'الصفقات';
+        $data['old_page']    = 'الرئيسية';
 
         $data['createRoute']  = route('admin.deals.create');
 

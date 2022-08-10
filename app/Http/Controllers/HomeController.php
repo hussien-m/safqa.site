@@ -17,6 +17,7 @@ class HomeController extends Controller
     {
       $this->middleware('auth')->except(['usd','var']);
       $this->middleware('verified')->except(['usd','var']);
+      $this->middleware('verifiProfile')->except(['usd','var']);
     }
 
     /**
@@ -37,5 +38,10 @@ class HomeController extends Controller
     public function var()
     {
         return view("Sadsad");
+    }
+
+    public function dash()
+    {
+        return view('new');
     }
 }
