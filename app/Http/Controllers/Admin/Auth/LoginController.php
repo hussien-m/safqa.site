@@ -32,19 +32,23 @@ class LoginController extends Controller
 
         if(isAdminActive($request->email))
         {
-            if(Auth::guard('admin')->attempt($credentials))
-            {
-                session()->flash('message','مرحبا بك');
-                session()->flash('type','info');
+            if(Auth::guard('admin')->attempt($credentials)){
+
+                toast('مرحبا بك '.Auth::user()->name,'success');
                 return redirect(RouteServiceProvider::ADMIN);
+                
+            } else {
+
+                toast('تاكد من البريد الالكتروني او كلمة المرور','success');
+                return redirect()->action([
+                    LoginController::class,
+                    'login'
+                ]);
+
             }
-            session()->flash('no_active' , __('الرجاء التأكد من البريد الالكتروني او كلمة المرور') );
-            return redirect()->action([
-                LoginController::class,
-                'login'
-            ]);
+
         }
-        session()->flash('no_active' , __('هذا الحساب معطل يرجى التواصل من الدعم الفني') );
+        toast('هذا الحساب معطل مؤقتا تواصل مع الادارة','warning');
         return redirect()->route("admin.login")->withInput();
 
     }

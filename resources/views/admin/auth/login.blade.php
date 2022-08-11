@@ -64,10 +64,10 @@
                                    {{-- @include("dashboard.erros") --}}
 
                                     {{-- Flash Message --}}
-                                    @if(Session::has('no_active'))
-                                        <div class="alert alert-block alert-danger">
-                                            <i class=" fa fa-check cool-green "></i>
-                                            {{ nl2br(Session::get('no_active')) }}
+                                    @if (session()->has('message'))
+                                        <div class="alert alert-warning alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            {{ session()->get('message') }}
                                         </div>
                                     @endif
 
@@ -128,5 +128,35 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{asset('dash-rtl/')}}/app-assets/js/scripts/forms/form-login-register.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL JS-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    @if (Session::has('message'))
+
+    toastr.options = {
+        "debug": true,
+        "positionClass": "toast-top-center",
+        "onclick": null,
+        "fadeIn": 300,
+        "fadeOut": 1000,
+        "timeOut": 5000,
+        "extendedTimeOut": 1000
+        }
+        var type = "{{ Session::get('type', 'info') }}";
+        switch (type) {
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+    @endif
+</script>
 </body>
 </html>

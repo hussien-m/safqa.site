@@ -14,7 +14,7 @@ class Admins extends AdminController
     }
     public function dashboard(Request $request)
     {
-        $data['requestIs'] = $request->is('admin/home');
+        //$data['requestIs'] = $request->is('admin/home');
         $data['page_name'] = "الرئيسية";
         return view('admin.dashboard',$data);
     }

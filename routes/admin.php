@@ -28,6 +28,7 @@ Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('ad
 
         Route::post('/logout',[LoginController::class,'destroy'])->name('logout');
 
+        //Route::get('/', [Admins::class,'dashboard'])->name('dashboard');
         Route::get('home', [Admins::class,'dashboard'])->name('dashboard');
 
         Route::get('home2', [Admins::class,'dashboard2'])->name('dashboard2');
