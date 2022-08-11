@@ -32,15 +32,15 @@
             <div class="form-group">
                 <label for="name">طريقة الدفع</label>
                 <select name="user_pay" class="form-control">
-                    <option value="user">صاحب العرض</option>
-                    <option value="dealer">صاحب الصفقة</option>
+                    <option {{$target->user_pay=="user"   ? 'selected':'' }}  value="user">صاحب العرض يدفع</option>
+                    <option {{$target->user_pay=="dealer" ? 'selected':'' }}  value="dealer">صاحب الصفقة يدفع</option>
                 </select>
             </div>
 
 
 
             <div class="form-group mt-1">
-                <button type="submit" class="btn btn-primary">تعديل الهدف </button>
+                <button type="submit" class="btn btn-primary"> {{$page_name}} <i class="la la-edit"></i></button>
             </div>
         </form>
 

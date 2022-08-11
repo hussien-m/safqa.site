@@ -30,12 +30,13 @@
             <div class="form-group">
                 <label for="name">اختر المدينة</label>
                 <select class="form-control" name="city_id" id="city_id">
+
                 </select>
             </div>
 
 
             <div class="form-group mt-1">
-                <button type="submit" class="btn btn-primary">أضف دولة جديدة</button>
+                <button type="submit" class="btn btn-primary">تعديل <i class="la la-edit"></i></button>
             </div>
         </form>
 
@@ -60,13 +61,8 @@
 }
 </script>
 
-
-
 <script>
 
-    $(function () {
-        $('.select2').select2();
-    });
 
     $('#country_id').on('change',function (e) {
         var country_id = e.target.value;

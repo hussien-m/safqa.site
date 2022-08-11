@@ -45,6 +45,7 @@ class DealTargets extends AdminController
 
         $data['old_page']    = "أهداف الصفقات";
 
+
         return view('admin.deal_targets.create',$data);
     }
 
@@ -78,6 +79,7 @@ class DealTargets extends AdminController
         $data['page_name']      = 'تعديل اهداف الصفقة';
 
         $data['old_page']       = "اهداف الصفقات";
+
 
         return view('admin.deal_targets.edit',$data);
     }

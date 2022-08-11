@@ -39,9 +39,9 @@ Route::name('admin.')->middleware('activeAdmin')->namespace('Admin')->prefix('ad
 
 
         Route::post('admin.change-deal-active/{id}',function(Request $request,$id){
-            
+           // dd($request->active);
             $deal= Deal::findOrFail($id);
-            $deal->active = $request->active;
+            $deal->active = $request->active ?? 0;
             $deal->save();
 
             toast('تم تعديل حالة الصفقة','success');

@@ -2,6 +2,10 @@
 
 @section('styles')
 <link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/vendors/css/forms/toggle/bootstrap-switch.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/vendors/css/forms/toggle/switchery.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/plugins/forms/switch.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('dash-rtl/app-assets/css-rtl/core/colors/palette-switch.css')}}">
    <style>
         div.dataTables_wrapper div.dataTables_filter {
             text-align: right;
@@ -35,9 +39,7 @@
                   <tr>
                     <th>عنوان الصفقة</th>
                     <th>نوع الصفقة</th>
-                    <th>هدف الصفقة</th>
                     <th>السعر</th>
-                    <th>شرط السعر</th>
                     <th>الحالة</th>
                     <th>الظهور</th>
                     <th>حدث</th>
@@ -47,18 +49,26 @@
                     @forelse ( $deals as $key=>$deal )
                         <tr id="{{$deal->id}}">
                             <td>{{$deal->title}}</td>
-                            <td>{{$deal->deal_type}}</td>
-                            <td>{{$deal->target_deal}}</td>
-                            <td>{{ Currency::format($deal->price,'SAR') }}</td>
-                            <td>{{$deal->price_condition}}</td>
+                            <td>{{$deal->deal_type ." | ". $deal->target_deal}}</td>
+
+                            <td>{{ Currency::format($deal->price,'SAR') .' | '. $deal->price_condition }}</td>
                             <td>{{$deal->status}}</td>
                             <td>
                                 <form action="{{route('admin.change-deal-active',$deal->id)}}" method="post">
                                     @csrf
+                                    {{--
                                     <select class="form-control" name='active' onChange="this.form.submit()">
                                         <option {{$deal->active === 1 ? 'selected':''}} value="1" >مفعلة</option>
                                         <option {{$deal->active === 0 ? 'selected':''}} value="0" >معطلة</option>
                                     </select>
+                                        --}}
+
+                                        <fieldset>
+                                            <div class="float-left">
+                                              <input type="checkbox" name="active" class="make-switch switchBootstrap" id="switchBootstrap1" {{$deal->active ? 'checked':''}} onChange="this.form.submit()" value="{{$deal->active==0 ? "1":"0"}}"/>
+                                            </div>
+                                          </fieldset>
+
                                 </form>
                             </td>
 
@@ -76,17 +86,14 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" align="center">لاتوجد اي دول </td>
+                            <td colspan="5" align="center">لاتوجد اي صفقات </td>
                         </tr>
                     @endforelse
                 </tbody>
                 <tfoot>
                   <tr>
                     <th>عنوان الصفقة</th>
-                    <th>نوع الصفقة</th>
-                    <th>هدف الصفقة</th>
                     <th>السعر</th>
-                    <th>شرط السعر</th>
                     <th>الحالة</th>
                     <th>الظهور</th>
                     <th>حدث</th>
@@ -107,7 +114,10 @@
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{asset('dash-rtl/app-assets/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('dash-rtl/app-assets/js/scripts/tables/datatables/datatable-basic.js')}}" type="text/javascript"></script>
-
+<script src="{{asset('dash-rtl/app-assets/vendors/js/forms/toggle/bootstrap-switch.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('dash-rtl/app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('dash-rtl/app-assets/vendors/js/forms/toggle/switchery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('dash-rtl/app-assets/js/scripts/forms/switch.js')}}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
    var t = $('.table').DataTable({
