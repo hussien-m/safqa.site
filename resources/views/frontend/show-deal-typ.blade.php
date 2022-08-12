@@ -17,7 +17,7 @@
                         </a>
                     </div>
 
-                    <a href="{{route('show.deal',$deal->title)}}" class="guide_item_content pt-2 d-block">{{$deal->title}}</a>
+                    <a href="{{route('show.deal',str_replace(' ','-',$deal->title))}}" class="guide_item_content pt-2 d-block">{{$deal->title}}</a>
                     <ul>
                         <li><i class="fa fa-user"></i> {{$deal->user_name}}</li>
                         <li><i class="fa fa-money"></i> {{ Currency::format($deal->price)}}</li>

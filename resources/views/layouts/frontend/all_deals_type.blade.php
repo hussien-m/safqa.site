@@ -20,7 +20,7 @@
                 @foreach ( $types as $type)
                     <div class="col-md-4">
                         <div class="service_item">
-                            <a href="{{route('deal.type',$type->type)}}" class="service_item_link shadow">
+                            <a href="{{route('deal.type',str_replace(' ','-',$type->type))}}" class="service_item_link shadow">
                                 <img src="{{asset('images/deals_type/'.$type->image)}}" class="img-fluid service_item_img" alt="{{$type->type}}">
                                 <div class="service_item_title"><p>{{$type->type}}</p></div>
                             </a>

@@ -47,6 +47,7 @@ class HomeController extends Controller
 
     public function getDealFromType($type)
     {
+        $type=str_replace('-',' ',$type);
         $data['page_name']=$type;
 
         $data['deals']= DB::table('deals')
@@ -65,6 +66,7 @@ class HomeController extends Controller
 
     public function showDeal($title)
     {
+        $title=str_replace('-',' ',$title);
         $data['page_name']=$title;
 
         $data['deals']= DB::table('deals')
