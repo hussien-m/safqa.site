@@ -34,9 +34,9 @@ class LoginController extends Controller
         {
             if(Auth::guard('admin')->attempt($credentials)){
 
-                toast('مرحبا بك '.Auth::user()->name,'success');
+                toast('مرحبا بك ','success');
                 return redirect(RouteServiceProvider::ADMIN);
-                
+
             } else {
 
                 toast('تاكد من البريد الالكتروني او كلمة المرور','success');

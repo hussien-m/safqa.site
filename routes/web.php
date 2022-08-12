@@ -10,17 +10,9 @@ Auth::routes(['verify' => true]);
 Route::middleware('siteStatus')->group(function(){
 
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-    Route::get('test', [HomeController::class , 'usd']);
-    Route::get('var',  [HomeController::class , 'var']);
 });
 
 
@@ -35,7 +27,10 @@ Route::get('complete-profile', function (){
 
 })->middleware('verified')->name('verifi.profile');
 
+Route::get('deal-type/{type}',[HomeController::class,'getDealFromType'])->name('deal.type');
+Route::get('deal/{title}',[HomeController::class,'showDeal'])->name('show.deal');
 
+Route::get('test', function(){
 
-
-Route::get('new-dash',  [HomeController::class , 'dash']);
+    return view('layouts.inc');
+});

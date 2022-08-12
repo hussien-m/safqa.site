@@ -79,7 +79,6 @@
     <script src="{{asset('frontend/assets/')}}/js/jquery-1.12.4.min.js"></script>
     <script src="{{asset('frontend/assets/')}}/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{asset('frontend/assets/')}}/js/main.js"></script>
-    <script type="text/javascript" src="{{ URL::asset ('js/custom-scripts.js') }}"></script>
 
     @yield('scripts')
 

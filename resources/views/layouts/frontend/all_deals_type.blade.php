@@ -17,31 +17,16 @@
             <h2 class="title text-center sec_title">أنواع الصفقات
             </h2>
             <div class="row pt-3">
-                <div class="col-md-4">
-                    <div class="service_item">
-                        <a href="/u/search?type=1" class="service_item_link shadow">
-                            <img src="{{asset('frontend/assets/')}}/images/14.jpg" class="img-fluid service_item_img" alt="أعمال">
-                            <div class="service_item_title"><p>صفقات منتجات</p></div>
-                        </a>
+                @foreach ( $types as $type)
+                    <div class="col-md-4">
+                        <div class="service_item">
+                            <a href="{{route('deal.type',$type->type)}}" class="service_item_link shadow">
+                                <img src="{{asset('images/deals_type/'.$type->image)}}" class="img-fluid service_item_img" alt="{{$type->type}}">
+                                <div class="service_item_title"><p>{{$type->type}}</p></div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service_item">
-                        <a href="/u/search?type=3" class="service_item_link shadow">
-                            <img src="{{asset('frontend/assets/')}}/images/16.jpg" class="img-fluid service_item_img" alt="أعمال">
-                            <div class="service_item_title"><p>صفقات وظيفية</p></div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="service_item">
-                        <a href="/u/search?type=2" class="service_item_link shadow">
-                            <img src="{{asset('frontend/assets/')}}/images/16.jpg" class="img-fluid service_item_img" alt="أعمال">
-                            <div class="service_item_title"><p>صفقات خدمات</p></div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </section>

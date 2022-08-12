@@ -20,4 +20,19 @@ class Deal extends Model
     {
         return $this->belongsTo(DealTarget::class,'deal_target_id','id');
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id','id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class,'city_id','id');
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class,'region_id','id');
+    }
 }

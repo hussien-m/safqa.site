@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/')}}/css/footer.css">
     <link rel="stylesheet" href="{{asset('frontend/assets/')}}/css/login.css">
     <link rel="stylesheet" href="{{asset('frontend/assets/')}}/css/auth.css">
+    <link rel="stylesheet" href="{{asset('frontend/assets/')}}/css/custome.css">
 <script src="{{asset('frontend/jquery-3.5.1.min.js')}}"></script>
 
 @yield('styles')
